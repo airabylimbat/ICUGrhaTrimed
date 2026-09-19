@@ -46,29 +46,59 @@ a{text-decoration:none;color:inherit}
   position:relative;
   overflow:hidden;
 }
-.hero:before{
-  content:"";
-  position:absolute;
-  width:520px;
-  height:520px;
-  border:25px solid rgba(255,201,40,.9);
-  border-radius:50%;
-  right:-170px;
-  bottom:-300px
+.hero-grid{
+  min-height:445px;
+  display:grid;
+  grid-template-columns:1fr;
+  align-items:center;
+  padding:55px 0;
+  position:relative;
+  z-index:1;
 }
-.hero-grid{min-height:445px;display:grid;grid-template-columns:1.15fr .85fr;gap:35px;align-items:center;padding:48px 0;position:relative;z-index:1}
-.kicker{color:var(--yellow);font-weight:800;font-size:18px}
-.hero h1{font-size:clamp(40px,5vw,64px);line-height:1;margin:8px 0}
-.hero h2{font-size:25px;margin:0 0 14px}
+.kicker{
+  color:var(--yellow);
+  font-weight:800;
+  font-size:19px;
+  letter-spacing:.5px;
+  margin-bottom:8px;
+}
+
+.hero h1{
+  font-size:clamp(46px,6vw,72px);
+  line-height:.95;
+  font-weight:900;
+  letter-spacing:-2px;
+  margin:8px 0 12px;
+  text-shadow:0 3px 15px rgba(0,0,0,.20);
+}
+
+.hero h2{
+  font-size:25px;
+  font-weight:700;
+  margin:0 0 16px;
+}
+
+.hero .line{
+  width:80px;
+  height:6px;
+  background:var(--yellow);
+  border-radius:10px;
+  margin:20px 0;
+}
+
+.hero p{
+  font-size:17px;
+  line-height:1.7;
+  color:#F1F7FC;
+  max-width:720px;
+  text-shadow:0 2px 8px rgba(0,0,0,.25);
+}
 .hero .line{width:62px;height:5px;background:var(--yellow);border-radius:4px;margin:18px 0}
 .hero p{font-size:17px;line-height:1.65;color:#E7F2FC;max-width:650px}
 .buttons{margin-top:20px}
 .btn{display:inline-block;padding:12px 18px;border-radius:10px;font-weight:800;margin:4px 7px 4px 0}
 .btn-primary{background:var(--yellow);color:#173B63}
 .btn-outline{border:1px solid rgba(255,255,255,.65);color:#fff}
-.hero-circle{width:min(390px,80vw);aspect-ratio:1;border:24px solid var(--yellow);border-radius:50%;display:grid;place-items:center;text-align:center;background:rgba(255,255,255,.08);margin:auto}
-.hero-circle .big{font-size:29px;font-weight:900;line-height:1.1}
-.hero-circle .small{color:var(--yellow);font-weight:900;margin-top:13px}
 .hero-values{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:25px}
 .hero-value{text-align:center;border:1px solid rgba(255,255,255,.2);border-radius:13px;background:rgba(255,255,255,.07);padding:12px 5px}
 .hero-value .symbol{font-size:25px;color:var(--yellow)}
@@ -182,7 +212,6 @@ footer p{margin:6px 0;color:#D5E7F6;font-size:14px}.footer-right{text-align:righ
     <div class="hero-value"><div class="symbol">◆</div><b>Together</b><span>Healthier Tomorrow</span></div>
    </div>
   </div>
-  <div class="hero-circle"><div><div style="font-size:65px">🏥</div><div class="big">EVERY<br>PATIENT<br>MATTERS</div><div class="small">CARE BEYOND LIMITS</div></div></div>
  </div>
 </section>
 
