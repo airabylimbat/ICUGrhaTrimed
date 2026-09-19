@@ -158,7 +158,167 @@ a{text-decoration:none;color:inherit}
 }
 .hero-value .symbol{font-size:25px;color:var(--yellow)}
 .hero-value b{display:block}.hero-value span{font-size:11px;color:#D7E9F8}
+/* =================================
+   MODAL NILAI UTAMA
+================================= */
 
+.value-icon{
+  width:38px;
+  height:38px;
+  display:grid;
+  place-items:center;
+  border-radius:50%;
+  background:#0757B5;
+  color:var(--yellow);
+  font-size:20px;
+  font-weight:900;
+  flex-shrink:0;
+}
+
+.value-overlay{
+  position:fixed;
+  inset:0;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  background:rgba(2,20,40,.78);
+
+  backdrop-filter:blur(7px);
+  -webkit-backdrop-filter:blur(7px);
+
+  z-index:9999;
+
+  opacity:0;
+  visibility:hidden;
+
+  transition:
+    opacity .25s ease,
+    visibility .25s ease;
+}
+
+.value-overlay.show{
+  opacity:1;
+  visibility:visible;
+}
+
+.value-modal{
+  position:relative;
+
+  width:min(760px,88%);
+  min-height:360px;
+
+  background:linear-gradient(
+    145deg,
+    #ffffff 0%,
+    #F4F8FC 100%
+  );
+
+  border-radius:24px;
+  padding:55px 65px;
+
+  text-align:center;
+
+  box-shadow:
+    0 30px 80px rgba(0,0,0,.35);
+
+  transform:translateY(25px) scale(.96);
+
+  transition:transform .3s ease;
+}
+
+.value-overlay.show .value-modal{
+  transform:translateY(0) scale(1);
+}
+
+.value-modal-icon{
+  width:90px;
+  height:90px;
+
+  margin:0 auto 20px;
+
+  display:grid;
+  place-items:center;
+
+  border-radius:50%;
+
+  background:#0757B5;
+  color:var(--yellow);
+
+  font-size:48px;
+  font-weight:900;
+
+  box-shadow:
+    0 10px 25px rgba(7,87,181,.25);
+}
+
+.value-modal-label{
+  color:var(--muted);
+  font-size:12px;
+  font-weight:800;
+  letter-spacing:2px;
+  margin-bottom:8px;
+}
+
+.value-modal h2{
+  margin:0;
+  color:var(--navy);
+  font-size:42px;
+  font-weight:900;
+}
+
+.modal-line{
+  width:70px;
+  height:5px;
+
+  background:linear-gradient(
+    90deg,
+    var(--yellow),
+    var(--orange)
+  );
+
+  border-radius:10px;
+  margin:18px auto 20px;
+}
+
+.value-modal p{
+  max-width:600px;
+  margin:0 auto;
+
+  color:#40566D;
+
+  font-size:20px;
+  line-height:1.7;
+}
+
+.value-close{
+  position:absolute;
+
+  top:18px;
+  right:20px;
+
+  width:42px;
+  height:42px;
+
+  border:0;
+  border-radius:50%;
+
+  background:#EDF3F8;
+  color:var(--navy);
+
+  font-size:28px;
+  cursor:pointer;
+
+  display:grid;
+  place-items:center;
+
+  transition:.2s ease;
+}
+
+.value-close:hover{
+  background:var(--yellow);
+  transform:rotate(90deg);
+}
 /* SECTIONS */
 section{padding:44px 0}
 .section-head{margin-bottom:20px}
@@ -322,6 +482,30 @@ footer p{margin:6px 0;color:#D5E7F6;font-size:14px}.footer-right{text-align:righ
  .two-col,.bottom-grid,.footer-grid{grid-template-columns:1fr}.footer-right{text-align:left}
 }
 @media(max-width:560px){
+ .value-modal{
+  width:90%;
+  min-height:auto;
+  padding:45px 25px 35px;
+}
+
+.value-modal-icon{
+  width:70px;
+  height:70px;
+  font-size:36px;
+}
+
+.value-modal h2{
+  font-size:34px;
+}
+
+.value-modal p{
+  font-size:17px;
+}
+
+.value-modal-label{
+  font-size:10px;
+  letter-spacing:1.5px;
+}
  .hero{
   background-position:center center;
 }
@@ -394,27 +578,59 @@ footer p{margin:6px 0;color:#D5E7F6;font-size:14px}.footer-right{text-align:righ
    <div class="buttons"><a class="btn btn-primary" href="#akses">Akses Cepat</a><a class="btn btn-outline" href="#pengumuman">Pengumuman</a></div>
 <div class="hero-values">
 
-  <div class="hero-value">
+  <button class="hero-value" onclick="showValue('cepat')">
+    <span class="value-icon">C</span>
     <b>Cepat</b>
-  </div>
+  </button>
 
-  <div class="hero-value">
+  <button class="hero-value" onclick="showValue('aman')">
+    <span class="value-icon">A</span>
     <b>Aman</b>
-  </div>
+  </button>
 
-  <div class="hero-value">
+  <button class="hero-value" onclick="showValue('ramah')">
+    <span class="value-icon">R</span>
     <b>Ramah</b>
-  </div>
+  </button>
 
-  <div class="hero-value">
+  <button class="hero-value" onclick="showValue('empati')">
+    <span class="value-icon">E</span>
     <b>Empati</b>
-  </div>
+  </button>
 
 </div>
   </div>
  </div>
 </section>
+<!-- MODAL NILAI UTAMA -->
 
+<div class="value-overlay" id="valueOverlay">
+
+  <div class="value-modal">
+
+    <button class="value-close" onclick="closeValue()">
+      ×
+    </button>
+
+    <div class="value-modal-icon" id="modalIcon">
+      C
+    </div>
+
+    <div class="value-modal-label">
+      NILAI UTAMA ICU GRHA TRIMED
+    </div>
+
+    <h2 id="modalTitle">Cepat</h2>
+
+    <div class="modal-line"></div>
+
+    <p id="modalText">
+      Pelayanan yang responsif, sigap, dan tepat waktu bagi setiap pasien.
+    </p>
+
+  </div>
+
+</div>
 <section class="quick" id="akses">
  <div class="container">
   <div class="section-head"><h2>▦ Akses Cepat</h2><p>Pilih menu berikut untuk menuju informasi yang Anda butuhkan.</p></div>
@@ -640,6 +856,91 @@ updateClock();
 renderCalendar();
 
 setInterval(updateClock,1000);
+/* =================================
+   MODAL NILAI UTAMA
+================================= */
+
+const valueData = {
+
+  cepat:{
+    title:"Cepat",
+    icon:"C",
+    text:"Pelayanan yang responsif, sigap, dan tepat waktu bagi setiap pasien."
+  },
+
+  aman:{
+    title:"Aman",
+    icon:"A",
+    text:"Menjamin keselamatan pasien melalui standar mutu dan prosedur pelayanan."
+  },
+
+  ramah:{
+    title:"Ramah",
+    icon:"R",
+    text:"Memberikan pelayanan dengan sikap sopan, santun, dan komunikasi yang baik."
+  },
+
+  empati:{
+    title:"Empati",
+    icon:"E",
+    text:"Melayani dengan kepedulian dan memahami kondisi pasien secara menyeluruh."
+  }
+
+};
+
+
+function showValue(type){
+
+  const data = valueData[type];
+
+  if(!data) return;
+
+  document.getElementById("modalIcon").textContent =
+    data.icon;
+
+  document.getElementById("modalTitle").textContent =
+    data.title;
+
+  document.getElementById("modalText").textContent =
+    data.text;
+
+  document
+    .getElementById("valueOverlay")
+    .classList.add("show");
+}
+
+
+function closeValue(){
+
+  document
+    .getElementById("valueOverlay")
+    .classList.remove("show");
+
+}
+
+
+/* Klik area gelap */
+
+document
+  .getElementById("valueOverlay")
+  .addEventListener("click",function(e){
+
+    if(e.target === this){
+      closeValue();
+    }
+
+  });
+
+
+/* Tombol ESC */
+
+document.addEventListener("keydown",function(e){
+
+  if(e.key === "Escape"){
+    closeValue();
+  }
+
+}); 
 </script>
 </body>
 </html>
