@@ -32,8 +32,30 @@ a{text-decoration:none;color:inherit}
 .nav a:hover,.nav a.active{background:var(--yellow);color:#173B63}
 
 /* HERO */
-.hero{background:linear-gradient(120deg,#042B55 0%,#07558F 58%,#0C6AA8 100%);color:#fff;position:relative;overflow:hidden}
-.hero:before{content:"";position:absolute;width:520px;height:520px;border:25px solid rgba(255,201,40,.9);border-radius:50%;right:-170px;bottom:-300px}
+.hero{
+  background:
+    linear-gradient(
+      90deg,
+      rgba(4,43,85,.78) 0%,
+      rgba(5,70,120,.70) 50%,
+      rgba(7,91,145,.62) 100%
+    ),
+    url('icu-wallpaper.png') center center / cover no-repeat;
+
+  color:#fff;
+  position:relative;
+  overflow:hidden;
+}
+.hero:before{
+  content:"";
+  position:absolute;
+  width:520px;
+  height:520px;
+  border:25px solid rgba(255,201,40,.9);
+  border-radius:50%;
+  right:-170px;
+  bottom:-300px
+}
 .hero-grid{min-height:445px;display:grid;grid-template-columns:1.15fr .85fr;gap:35px;align-items:center;padding:48px 0;position:relative;z-index:1}
 .kicker{color:var(--yellow);font-weight:800;font-size:18px}
 .hero h1{font-size:clamp(40px,5vw,64px);line-height:1;margin:8px 0}
@@ -106,6 +128,12 @@ footer p{margin:6px 0;color:#D5E7F6;font-size:14px}.footer-right{text-align:righ
  .two-col,.bottom-grid,.footer-grid{grid-template-columns:1fr}.footer-right{text-align:left}
 }
 @media(max-width:560px){
+ .hero{
+  background-position:center center;
+}
+ .hero-grid{
+  min-height:445px;
+}
  .container{width:94%}.logo-rs{max-width:70%;width:220px}.logo-wecare{max-width:28%;width:120px}
  .nav a{font-size:12px;padding:12px 10px}.hero h1{font-size:40px}.hero h2{font-size:20px}
  .hero-values{grid-template-columns:repeat(2,1fr)}.quick-grid{grid-template-columns:1fr}
