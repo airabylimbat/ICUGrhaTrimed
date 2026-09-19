@@ -21,8 +21,19 @@ a{text-decoration:none;color:inherit}
 /* HEADER */
 .site-header{background:#fff;position:sticky;top:0;z-index:50;box-shadow:0 2px 12px rgba(0,0,0,.06)}
 .header-main{min-height:84px;display:flex;align-items:center;gap:20px;justify-content:space-between}
-.logo-rs{width:285px;max-width:45%;height:auto}
-.logo-wecare{width:175px;max-width:25%;height:auto}
+.logo-rs{
+  height:72px;
+  width:auto;
+  max-width:48%;
+  object-fit:contain;
+}
+
+.logo-wecare{
+  height:72px;
+  width:auto;
+  max-width:30%;
+  object-fit:contain;
+}
 .search{width:245px;background:#F2F6FA;border:1px solid var(--line);border-radius:28px;padding:11px 15px;display:flex;gap:8px}
 .search input{width:100%;border:0;outline:0;background:transparent;color:var(--text)}
 .navbar{background:var(--navy);color:#fff}
@@ -99,8 +110,52 @@ a{text-decoration:none;color:inherit}
 .btn{display:inline-block;padding:12px 18px;border-radius:10px;font-weight:800;margin:4px 7px 4px 0}
 .btn-primary{background:var(--yellow);color:#173B63}
 .btn-outline{border:1px solid rgba(255,255,255,.65);color:#fff}
-.hero-values{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:25px}
-.hero-value{text-align:center;border:1px solid rgba(255,255,255,.2);border-radius:13px;background:rgba(255,255,255,.07);padding:12px 5px}
+.hero-values{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:14px;
+  margin-top:28px;
+  max-width:850px;
+}
+
+.hero-value{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  min-height:58px;
+  text-align:center;
+
+  background:linear-gradient(
+    135deg,
+    rgba(255,201,40,.96),
+    rgba(243,154,22,.92)
+  );
+
+  border:1px solid rgba(255,255,255,.55);
+  border-radius:12px;
+
+  padding:12px 10px;
+
+  box-shadow:
+    0 8px 20px rgba(0,0,0,.18),
+    inset 0 1px 0 rgba(255,255,255,.35);
+
+  transition:.2s ease;
+}
+
+.hero-value:hover{
+  transform:translateY(-3px);
+  box-shadow:
+    0 12px 25px rgba(0,0,0,.25);
+}
+
+.hero-value b{
+  display:block;
+  color:#173B63;
+  font-size:18px;
+  font-weight:900;
+  letter-spacing:.3px;
+}
 .hero-value .symbol{font-size:25px;color:var(--yellow)}
 .hero-value b{display:block}.hero-value span{font-size:11px;color:#D7E9F8}
 
@@ -164,9 +219,32 @@ footer p{margin:6px 0;color:#D5E7F6;font-size:14px}.footer-right{text-align:righ
  .hero-grid{
   min-height:445px;
 }
- .container{width:94%}.logo-rs{max-width:70%;width:220px}.logo-wecare{max-width:28%;width:120px}
+ .container{width:94%}
+ .logo-rs{
+  height:52px;
+  width:auto;
+  max-width:65%;
+}
+
+.logo-wecare{
+  height:52px;
+  width:auto;
+  max-width:30%;
+}
  .nav a{font-size:12px;padding:12px 10px}.hero h1{font-size:40px}.hero h2{font-size:20px}
- .hero-values{grid-template-columns:repeat(2,1fr)}.quick-grid{grid-template-columns:1fr}
+.hero-values{
+  grid-template-columns:repeat(2,1fr);
+  gap:10px;
+  max-width:100%;
+}
+
+.hero-value{
+  min-height:52px;
+}
+
+.hero-value b{
+  font-size:15px;
+}.quick-grid{grid-template-columns:1fr}
  .news-item{grid-template-columns:55px 1fr}.badge{display:none}.panel{padding:17px}
 }
 </style>
@@ -205,12 +283,25 @@ footer p{margin:6px 0;color:#D5E7F6;font-size:14px}.footer-right{text-align:righ
    <h2 style="color:var(--yellow)">Integrated Care for a Safer Tomorrow</h2>
    <p>Portal informasi dan sumber daya digital untuk mendukung pelayanan intensif yang aman, berkualitas, dan berpusat pada pasien.</p>
    <div class="buttons"><a class="btn btn-primary" href="#akses">Akses Cepat</a><a class="btn btn-outline" href="#pengumuman">Pengumuman</a></div>
-   <div class="hero-values">
-    <div class="hero-value"><div class="symbol">●●●</div><b>Care</b><span>with Heart</span></div>
-    <div class="hero-value"><div class="symbol">✓</div><b>Safety</b><span>in Action</span></div>
-    <div class="hero-value"><div class="symbol">▮▮▮</div><b>Quality</b><span>Better Outcomes</span></div>
-    <div class="hero-value"><div class="symbol">◆</div><b>Together</b><span>Healthier Tomorrow</span></div>
-   </div>
+<div class="hero-values">
+
+  <div class="hero-value">
+    <b>Cepat</b>
+  </div>
+
+  <div class="hero-value">
+    <b>Aman</b>
+  </div>
+
+  <div class="hero-value">
+    <b>Ramah</b>
+  </div>
+
+  <div class="hero-value">
+    <b>Empati</b>
+  </div>
+
+</div>
   </div>
  </div>
 </section>
